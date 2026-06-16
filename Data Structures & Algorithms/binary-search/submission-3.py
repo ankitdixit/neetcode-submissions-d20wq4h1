@@ -1,0 +1,16 @@
+class Solution:
+    def binary_search(self, l: int, r: int, nums: List[int], target: int) -> int:
+        found = False
+        if l > r:
+            return -1
+        mid = l + ((r - l) // 2)
+        print("mid :", mid)
+        if nums[mid] == target:
+            return mid
+        if nums[mid] > target:
+            return self.binary_search(l, mid - 1, nums, target)
+        
+        return self.binary_search(mid + 1, r, nums, target)
+        
+    def search(self, nums: List[int], target: int) -> int:
+        return self.binary_search(0, len(nums) - 1, nums, target)
